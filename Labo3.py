@@ -1,54 +1,45 @@
 # ----Fonctions----
-def calculIMC(height, weight) :
+def isfloat(value):
+	# Verification du type de la valeur
+	# source: stackoverflow
+	try:
+		float(value)
+		return True
+	except:
+		return False
+
+def calculIMC(height, weight):
 	imc = float(weight)/((float(height)/100) ** 2)
 	return imc
 
+def entree():
+	per = []
+	taille = input("Taille? cm ")
+	while (not taille.isdigit() or (taille.isdigit()) and (int(taille) < 100 or int(taille) > 300)):
+		taille = ("Veuillez entrer une taille en centimetre ")
+	poids = input("Poids? kg ")
+	while (not isfloat(poids) or (isfloat(poids)) and (float(poids) < 30 or float(poids) > 500)):
+		poids = input("Veuillez rentrer un poids en kilo ")
+	sexe = input("Sexe? H/F/NB ").upper
+	while sexe not in {"H", "F", "NB"}:
+		sexe = input("Veuillez rentrer un sexe (Homme/Femme/Non-Binaire) ")
+	per.append(name)
+	per.append(calculIMC(taille, poids))
+	return per
 
-def main() :
-	global name
+
+
+def main():
+	# Fonction principale.
+	name = "jceirb"
 	tab = []
-	while name != "" :
+	while name != "":
 		name = input("Nom? ")
-		if name != "" :
-			per = []
-			height = input("Taille? cm ")
-			while float(height) > 250 or float(height) < 100 :
-				height = input("Veuillez ressaisir la taille en cm. ")
-			weight = input("Poids? kg ")
-			while float(weight) > 300 or float(weight) < 30 :
-				weight = input("Veuillez ressaisir le poids en kilo. ")
-			sexe = input("Sexe? H/F ")
-			while sexe not in {"H", "F"} :
-				sexe = input("Veuillez ressaisir le sexe H/F ")
-			imc = calculIMC(height, weight)
-			per.append(name)
-			per.append(imc)
-			tab.append(per)
-	print(tab)
-	cat = {}
-	cat["Obésité morbide (ou massive)"] = 40
-	cat["Obesité sévère"] = 35
-	cat["Obésité modérée"] = 30
-	cat["Surpoids"] = 25
-	cat["Corpulence normale"] = 18.5
-	cat["Maigreur"] = 16.5
-	cat["famine"] = 4.7
-	for i in cat:
-		for j in range(len(tab)):
-			print(cat[i], "cat")
-			if tab[j][1] > cat[i]:
-				print(tab[j][0], tab[j][1])
-				tab.pop(j)
-				print(tab)
-				print("------------")
+		if name != "":
+			entree()
 
 
 
 
-
-# ---Variables Globales---
-name = "jceirb"
-
-# ----Programme---
-if __name__ == "__main__" :
+if __name__ == "__main__":
 	main()
