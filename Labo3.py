@@ -40,13 +40,14 @@ def entree():
 def affichage(tab):
     cat = [["Obésité morbide (ou massive)", 40], ["Obesité sévère", 35], ["Obésité modérée", 30], ["Surpoids", 25],
            ["Corpulence normale", 18.5], ["Maigreur", 16.5], ["Famine", 4.7]]
-    for i in range(len(cat) - 1):
+    print("\nAffichage des données\n")
+    for i in range(len(cat)):
         for j in range(len(tab) - 1):
             if tab[j][1] > cat[i][1]:
-                print(cat[i])
-                print(tab[j])
+                print(cat[i][0], i)
+                print("\t", tab[j][0], j)
                 tab.pop(j)
-                print(tab)
+                print(tab, "tab")
 
 
 def main():
