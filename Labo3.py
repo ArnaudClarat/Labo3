@@ -26,10 +26,10 @@ def calculIMC(height, weight):
 
 def entree():
     taille = input("Taille? cm ")
-    while not taille.isdigit() or (taille.isdigit()) and (int(taille) < 100 or int(taille) > 300):
+    while not taille.isdigit() or taille.isdigit() and (int(taille) < 100 or int(taille) > 300):
         taille = input("Veuillez entrer une taille en centimetre ")
     poids = input("Poids? kg ")
-    while not isfloat(poids) or (isfloat(poids)) and (float(poids) < 30 or float(poids) > 500):
+    while not isfloat(poids) or isfloat(poids) and (float(poids) < 30 or float(poids) > 500):
         poids = input("Veuillez rentrer un poids en kilo ")
     sexe = input("Sexe? H/F/NB ").upper()
     while sexe not in {"H", "F", "NB"}:
@@ -42,12 +42,11 @@ def affichage(tab):
            ["Corpulence normale", 18.5], ["Maigreur", 16.5], ["Famine", 4.7]]
     print("\nAffichage des données\n")
     for i in range(len(cat)):
-        for j in range(len(tab) - 1):
-            if tab[j][1] > cat[i][1]:
-                print(cat[i][0], i)
-                print("\t", tab[j][0], j)
-                tab.pop(j)
-                print(tab, "tab")
+        print(cat[i][0])
+        for j in range(len(tab)):
+            if tab[j - 1][1] > cat[i][1]:
+                print("\t", tab[j - 1][0])
+                tab.pop(j - 1)
 
 
 def main():
